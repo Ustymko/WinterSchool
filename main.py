@@ -67,8 +67,8 @@ class Buyer:
     pass
 
 
-oleh = Student("oleh", "petrovych")
-oleh.print_name()
-taras = Student()
-taras.print_name()
-vasyl = Dean()
+#oleh = Student("oleh", "petrovych")
+#oleh.print_name()
+#taras = Student()
+#taras.print_name()
+#vasyl = Dean()
