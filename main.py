@@ -53,8 +53,8 @@ class FishShop:
         if fish_name in self.fishes:
             return self.fishes[fish_name] * weight
 
-    def cast_out_old_fish(self, fish_name: str, catch_date: datetime) -> str:
-        if catch_date >= self.expiration_date:
+    def cast_out_old_fish(self, fish_name: str, date: datetime) -> str:
+        if date >= self.expiration_date:
             return fish_name
         
 
