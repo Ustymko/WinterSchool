@@ -1,5 +1,6 @@
 import datetime
 from typing import List, Union
+from xmlrpc.client import _datetime
 
 
 # method
@@ -28,28 +29,34 @@ class Dean:
 
 class Fish:
 
-    def __init__(self) -> None:
-        self.name = "oseledets"
-        self.price_in_uah_per_kilo = 11.2
-        self.catch_date = datetime("21/01/2022")
-        self.origin = "Norway"
-        self.body_only = True
-        self.weight = 100
+    def __init__(self, name = "oseledets", weight = 100, price_in_uah_per_kilo = 11.2, 
+                catch_date = datetime("21/01/2022"), origin = "Norway", body_only = True) -> None:
+        self.name = name
+        self.weight = weight
+        self.price_in_uah_per_kilo = price_in_uah_per_kilo
+        self.catch_date = catch_date
+        self.origin = origin
+        self.body_only = body_only
+        
 
 
 class FishShop:
+    fishes = {}
+    expiration_date = datetime("21/01/2022")
+    def add_fish(self, fish_name: str, price_in_uah_per_kilo: float) -> None:
+        self.fishes[fish_name] = price_in_uah_per_kilo
 
-    def add_fish(self, fish_name: str, total_weight: float) -> None:
-        pass
-
-    def get_fish_names_sorted_by_price(self) -> List[Union[str, float]]:
-        pass
+    #def get_fish_names_sorted_by_price(self) -> List[Union[str, float]]:
+    #    pass
 
     def sell_fish(self, fish_name: str, weight: float) -> float:
-        pass
+        if fish_name in self.fishes:
+            return self.fishes[fish_name] * weight
 
-    def cast_out_old_fish(self) -> List[Union[str, float]]:
-        pass
+    def cast_out_old_fish(self, fish_name: str, catch_date: datetime) -> str:
+        if catch_date >= self.expiration_date:
+            return fish_name
+        
 
 
 class Seller:
