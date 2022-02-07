@@ -1,6 +1,5 @@
 
-
-class MusicalInstrumentShopManager:
+class MusicInstrumentShopManager:
     def __init__(self) -> None:
         self.wind_instruments = MusicInstrumentBox("wind")
         self.percussion_instruments = MusicInstrumentBox("percussion")
@@ -15,7 +14,7 @@ class MusicalInstrumentShopManager:
             self.string_instruments.add_instrument(name, brand, country, price, material)
 
     def get_music_band_instruments(self):
-        music_band_instruments = []
+        music_band_instruments = ()
         if "guitar" in self.string_instruments.instruments:
             music_band_instruments.append(self.string_instruments.instruments["guitar"][0])
         if "drums" in self.percussion_instruments.instruments:
@@ -55,7 +54,6 @@ class MusicalInstrumentShopManager:
         return self.all_instruments
 
 class MusicInstrumentBox:
-
     def __init__(self, type: str) -> None:
         self.type = type
         self.instruments = {}       #key - name, value - list of MusicInstumentInfo objects
@@ -68,11 +66,9 @@ class MusicInstrumentBox:
             self.instruments[name] = [new_instrument,]
 
 class MusicInstrumentInfo:
-    def __init__(self, type: str, name: str, brand: str, country: str, price: float, material: str) -> None:
-        self.type = type
+    def __init__(self, name: str, brand: str, country: str, price: float, material: str) -> None:
         self.name = name
         self.brand = brand
         self.country = country
         self.price = price
         self.material = material
-
